@@ -1,0 +1,14 @@
+<app-data-grid
+*ngIf = "gridData"
+[title]="'Users'"
+[titleIconClass]="'fa-users'"
+[gridCols] = "gridCols"
+[gridData] = "{data: users, totalCount: 0}"
+(actionClicked) = "onActionClicked($event)"
+[withFiltration] = true
+[canView]= true
+[canAdd] = true
+[canEdit] = true
+[canDeactivate] = true
+>
+</app-data-grid>
