@@ -72,11 +72,19 @@
                         <h6>Order Items</h6>
                         <p>Items Count: <span class="badge rounded-pill fs-6 bg-primary">{{orderDetails.Products.length}}</span></p>
                     </div>
+
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<!--
                     <owl-carousel-o [options]="orderCustomOptions">
                         <ng-container *ngFor="let orderItems of orderDetails.Products; let i = index">
                             <ng-template carouselSlide>
                                 <ng-container>
-                                    <div class="d-flex justify-content-between align-items-center border rounded mx-2 cursor-pointer h-100"> <!--routerLink="/product/{{orderItems.product._id}}"-->
+                                    <div class="d-flex justify-content-between align-items-center border rounded mx-2 cursor-pointer h-100"> routerLink="/product/{{orderItems.product._id}}"
                                         <div class="col-2">
                                             <img [src]="productsService.GetProductImage(productDetails[i].ProductImg)" width="50px"
                                                 class="border border-2 border-top-0 border-start-0 border-bottom-0" alt="">
@@ -95,8 +103,4 @@
                             </ng-template>
                         </ng-container>
                     </owl-carousel-o>
-                </div>
-            </div>
-        </ng-container>
-    </div>
-</div>
+-->

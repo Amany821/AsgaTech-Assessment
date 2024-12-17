@@ -23,7 +23,6 @@
     "ag-grid-community": "^29.0.0",
     "bootstrap": "^5.2.3",
     "font-awesome": "^4.7.0",
-    "ngx-owl-carousel-o": "^19.0.0",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.7.0",
     "tslib": "^2.3.0",
