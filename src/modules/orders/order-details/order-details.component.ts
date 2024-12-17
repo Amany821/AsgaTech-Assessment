@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-//import { OwlOptions } from 'ngx-owl-carousel-o';
 import { PaymentMethod } from 'src/models/_enums/PaymentMethodEnum';
 import { OrdersModel } from 'src/models/orders/OrdersModel';
 import { ProductsModel } from 'src/models/products/ProductsModel';
@@ -17,7 +16,6 @@ export class OrderDetailsComponent implements OnInit {
   userDetails!: UsersModel;
   productDetails: ProductsModel[] = [];
   PaymentMethod = PaymentMethod;
-  //orderCustomOptions: OwlOptions = {}
   
   constructor(
     public modalService: ModalService,
