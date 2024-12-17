@@ -65,15 +65,14 @@ export class DataGridComponent {
   pageSizes = [10, 25, 50, 100, 250, 500, 1000, 10000];
   
   constructor(
-    private dataGridService: DataGridService,
-    private modalService: ModalService
+    private dataGridService: DataGridService
   ) { }
 
   ngOnInit() {
-    this.setUpGrid();
+    this.onSetUpGrid();
   }
 
-  setUpGrid() {
+  onSetUpGrid() {
     this.colDefs = this.gridCols
       .filter((x) => !x.cellRendererName)
       .map((gridCol) => {

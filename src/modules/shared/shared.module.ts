@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataGridComponent } from './data-grid/data-grid.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,6 +26,7 @@ import { GridImage } from './data-grid/grid-image.component';
     exports: [
         DataGridComponent,
         GridImage,
-    ]
+    ],
+    providers: [DatePipe]
 })
 export class SharedModule { }

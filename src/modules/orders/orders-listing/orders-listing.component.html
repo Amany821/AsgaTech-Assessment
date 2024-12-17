@@ -1,13 +1,16 @@
 <app-data-grid
-*ngIf = "displayedUsers"
-[title]="'Users'"
+*ngIf = "displayedOrders"
+[title]="'orders'"
 [titleIconClass]="'fa-users'"
 [gridCols] = "gridCols"
-[gridData] = "{data: displayedUsers, totalCount: users.length}"
+[gridData] = "{data: displayedOrders, totalCount: orders.length}"
+(actionClicked) = "onActionClicked($event)"
 (pageChanged) = "onPageChanged($event)"
 (pageSizeChanged) = "onPageSizeChanged($event)"
 [withFiltration] = false
 [withPagination] = true
+[canView]= true
+[canAdd] = true
 [currentPageSize] = "pageSize"
 >
 </app-data-grid>

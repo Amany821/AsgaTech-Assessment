@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
-import { ProductsListingComponent } from './products-listing/products-listing.component';
-import { ProductUpdateComponent } from './product-update/product-update.component';
+import { OrdersListingComponent } from './orders-listing/orders-listing.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 const routes: Routes = [
-    { path: '', component: ProductsListingComponent },
+    { path: '', component: OrdersListingComponent },
 ];
 
 @NgModule({
     declarations: [
-        ProductsListingComponent,
-        ProductUpdateComponent
+        OrdersListingComponent,
+        OrderDetailsComponent
     ],
     imports: [
         CommonModule,
@@ -22,7 +23,8 @@ const routes: Routes = [
         RouterModule,
         ReactiveFormsModule,
         SharedModule,
+        CarouselModule,
         NgbCollapseModule
     ]
 })
-export class ProductsModule { }
+export class OrdersModule { }

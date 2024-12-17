@@ -36,7 +36,7 @@ export class ProductUpdateComponent implements OnInit {
     this.alertService.confirm('Are you sure you want to update this product?').then((result) => {
       if(result.value) {
         this.loaderService.start();
-        const loadedProducts = JSON.parse(localStorage.getItem('products')!) || []; // Default to empty array if null
+        const loadedProducts = JSON.parse(localStorage.getItem('products')!) || [];
   
         const updatedProduct: ProductsModel = {
           ProductId: this.product.ProductId,
@@ -59,6 +59,5 @@ export class ProductUpdateComponent implements OnInit {
         }
       }
     });
-    this
   }
 }

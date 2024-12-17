@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { OrderDetailsComponent } from 'src/modules/orders/order-details/order-details.component';
 import { ProductUpdateComponent } from 'src/modules/products/product-update/product-update.component';
 
 
@@ -8,7 +9,8 @@ import { ProductUpdateComponent } from 'src/modules/products/product-update/prod
 })
 export class ModalService {
   components = new Map<string, any>([
-    ['product-update', ProductUpdateComponent]
+    ['product-update', ProductUpdateComponent],
+    ['order-details', OrderDetailsComponent]
 
   ]);
 

@@ -67,7 +67,6 @@ export class ProductsListingComponent implements OnInit {
 
   onPageSizeChanged(pageSize: number) {
     this.pageSize = pageSize;
-    this.currentPage = 1;
     this.onGetProducts();
   }
 
