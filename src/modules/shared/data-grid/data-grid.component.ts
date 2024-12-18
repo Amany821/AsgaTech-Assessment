@@ -11,6 +11,7 @@ import { ModalService } from 'src/services/modal.service';
 import { AUTO_STYLE, animate, state, style, transition,  trigger } from '@angular/animations';
 import { GridImage } from './grid-image.component';
 import { ColPosition } from 'src/models/_enums/ColPositionEnum';
+import { GridCustomButtonModel } from 'src/models/_common/GridCustomButtonModel';
 
 @Component({
   selector: 'app-data-grid',
@@ -32,13 +33,14 @@ export class DataGridComponent {
   @Input() titleIconClass?: string;
   @Input() gridCols!: GridColDefModel[];
   @Input() gridData!: GridDataModel;
+  @Input() gridCustomButtons?: GridCustomButtonModel[];
   @Input() canAdd: boolean = false;
   @Input() canView: boolean = false;
   @Input() canEdit: boolean = false;
   @Input() canDelete: boolean = false;
-  @Input() canDeactivate: boolean = false;
   @Input() withFiltration: boolean = false;
   @Input() withPagination: boolean = false;
+  @Input() withSelection: boolean = false;
   @Input() currentPageSize: number = 10;
 
   @Output() actionClicked = new EventEmitter<GridActionModel>();
@@ -62,7 +64,7 @@ export class DataGridComponent {
   components = {
       'grid-image': GridImage,
   };
-  pageSizes = [10, 25, 50, 100, 250, 500, 1000, 10000];
+  pageSizes = [10, 25, 50, 100, 250, 500, 1000];
   
   constructor(
     private dataGridService: DataGridService
@@ -112,8 +114,7 @@ export class DataGridComponent {
     if (
       this.canView ||
       this.canEdit ||
-      this.canDelete ||
-      this.canDeactivate
+      this.canDelete
     ) {
       this.colDefs.push({
         field: 'Actions',
@@ -125,8 +126,7 @@ export class DataGridComponent {
           },
           canView: this.canView,
           canEdit: this.canEdit,
-          canDelete: this.canDelete,
-          canDeactivate: this.canDeactivate,
+          canDelete: this.canDelete
         },
       });
     }
@@ -165,6 +165,10 @@ export class DataGridComponent {
 
   onPageSizeChange(event: any) {
     this.pageSizeChanged.emit(event.target.value);
+  }
+
+  getSelectedRows() {
+    return this.gridApi?.getSelectedRows()??[];
   }
 
   onAutoSizeAll(skipHeader: boolean) {

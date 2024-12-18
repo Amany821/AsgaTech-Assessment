@@ -16,4 +16,8 @@ export class OrdersService {
   onGetAllOrders(): Observable<OrdersModel[]> {
     return this.httpClient.get<OrdersModel[]>(`${Environment.baseUrl}orders.json`);
   }
+
+  onGenerateUniqueId(): number {
+    return (Math.random() * 3 | 0);
+  }
 }

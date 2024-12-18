@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { OrdersListingComponent } from './orders-listing/orders-listing.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import { AddOrderComponent } from './add-order/add-order.component';
 
 const routes: Routes = [
     { path: '', component: OrdersListingComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
 @NgModule({
     declarations: [
         OrdersListingComponent,
-        OrderDetailsComponent
+        OrderDetailsComponent,
+        AddOrderComponent
     ],
     imports: [
         CommonModule,

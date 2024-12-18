@@ -40,10 +40,10 @@ export class ProductUpdateComponent implements OnInit {
   
         const updatedProduct: ProductsModel = {
           ProductId: this.product.ProductId,
-          ProductImg: this.product.ProductImg,
           ProductName: this.productForm.controls['name'].value ?? this.product.ProductName,
           ProductPrice: this.productForm.controls['price'].value ?? this.product.ProductPrice,
-          AvailablePieces: this.productForm.controls['quantity'].value ?? this.product.AvailablePieces
+          AvailablePieces: this.productForm.controls['quantity'].value ?? this.product.AvailablePieces,
+          ProductImg: this.product.ProductImg
         };
       
         const productIndex = loadedProducts.findIndex((product: ProductsModel) => product.ProductId === this.product.ProductId);

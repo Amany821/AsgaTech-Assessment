@@ -2,13 +2,16 @@
     <div class="d-flex justify-content-between">
         <div class="h2 mb-0 lockups-header-main">
             <i *ngIf="titleIconClass" [ngClass]="titleIconClass" class="fa" aria-hidden="true"></i> {{title}}
+            <span class="h6 text-primary" *ngIf="getSelectedRows().length"> {{getSelectedRows().length}}/{{gridData.data.length}}</span>
         </div>
         <div>
-            <button *ngIf="canAdd" class="btn btn-primary px-3 pointer" (click)="onActionClicked({action: 'Add'})">Add</button>
-            <button *ngIf="withFiltration" (click)="filtrationCollapsed = !filtrationCollapsed"
-                class="btn btn-secondary ms-2 px-3 pointer" title="Filtration From">
-                <i class="fa fa-sliders" aria-hidden="true"></i>
+            <button *ngFor="let gridCustomButton of gridCustomButtons" class="btn px-3 me-2" (click)="onActionClicked({action: gridCustomButton.action})" [title]="gridCustomButton.title" [ngClass]="gridCustomButton.btnClass ? gridCustomButton.btnClass : 'btn-secondary'">
+                <ng-container *ngIf="gridCustomButton.text">
+                    {{gridCustomButton.text}}
+                </ng-container>
+                <i *ngIf="gridCustomButton.iconClass" [ngClass]="gridCustomButton.iconClass" class="fa" aria-hidden="true"></i>
             </button>
+            <button *ngIf="canAdd" class="btn btn-primary px-3 pointer" (click)="onActionClicked({action: 'Add'})">Add</button>
         </div>
     </div>
     <div class="my-2 overflow-hidden" [@collapse]="filtrationCollapsed">
@@ -28,6 +31,7 @@
         [paginationPageSize]="currentPageSize"
         [components]="components"
         [domLayout]="'autoHeight'"
+        [rowSelection]="withSelection ? 'multiple' : undefined"
         (rowClicked)="onActionClicked({action: 'View', data: $event.data})"
         (gridReady)="onGridReady($event)">
     </ag-grid-angular>

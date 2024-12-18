@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CellClassParams } from 'ag-grid-community';
 import { finalize } from 'rxjs';
 import { GridActionModel } from 'src/models/_common/GridActionModel';
 import { GridColDefModel } from 'src/models/_common/GridColDefModel';
 import { ColPosition } from 'src/models/_enums/ColPositionEnum';
 import { ProductsModel } from 'src/models/products/ProductsModel';
+import { DataGridComponent } from 'src/modules/shared/data-grid/data-grid.component';
 import { DataGridService } from 'src/services/data-grid.service';
 import { LoadingSpinnerService } from 'src/services/loading-spinner.service';
 import { ModalService } from 'src/services/modal.service';
@@ -16,13 +17,17 @@ import { ProductsService } from 'src/services/products.service';
   styleUrls: ['./products-listing.component.scss']
 })
 export class ProductsListingComponent implements OnInit {
+  @ViewChild('grid') grid!: DataGridComponent;
   products: ProductsModel[] = [];
   displayedProducts: ProductsModel[] = [];
   gridCols: GridColDefModel[] = [
-    {headerName: 'Product Image', field: 'ProductImg', cellRendererName: 'grid-image', width: 150, position: ColPosition.Start},
+    {headerName: 'Product Image', field: 'ProductImg', cellRendererName: 'grid-image', width: 150, position: ColPosition.Start, withSelection: true},
     {headerName: 'Product Name', field: 'ProductName'},
     {headerName: 'Product Price', field: 'ProductPrice'},
     {headerName: 'Available Pieces', field: 'AvailablePieces', cellStyle: this.HighlightTheFewerQuantities},
+  ];
+  gridCustomButtons = [
+    { iconClass: 'fa-cart-plus', title: 'Order Products', action: 'OrderProducts' }
   ];
   pageSize = 10;
   currentPage = 1;
@@ -54,6 +59,9 @@ export class ProductsListingComponent implements OnInit {
     switch (gridAction.action) {
       case 'Edit':
         this.modalService.openModal('product-update', new Map<string, any>([['product', gridAction.data]]));
+        break;
+      case 'OrderProducts':
+        this.modalService.openModal('order-product', new Map<string, any>([['orderProduct', this.grid.getSelectedRows()]]), 'xl');
         break;
       default:
         break;
