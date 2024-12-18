@@ -17,7 +17,9 @@ export class OrdersService {
     return this.httpClient.get<OrdersModel[]>(`${Environment.baseUrl}orders.json`);
   }
 
+
   onGenerateUniqueId(): number {
-    return (Math.random() * 3 | 0);
+    const lastID = JSON.parse(localStorage.getItem('orders')!)[JSON.parse(localStorage.getItem('orders')!).length - 1].OrderId;
+    return lastID + 1;
   }
 }

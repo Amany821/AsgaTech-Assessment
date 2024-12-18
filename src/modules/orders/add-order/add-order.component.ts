@@ -63,7 +63,6 @@ export class AddOrderComponent implements OnInit {
       Quantity: [null, [Validators.required, Validators.min(1), Validators.max(orderItem.AvailablePieces)]]
     });
   }
-  
 
   get orderItems(): FormArray {
     return this.addOrderForm.get('orderItems') as FormArray;
