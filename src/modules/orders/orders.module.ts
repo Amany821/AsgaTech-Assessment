@@ -9,6 +9,7 @@ import { AddOrderComponent } from './add-order/add-order.component';
 
 const routes: Routes = [
     { path: '', component: OrdersListingComponent },
+    { path: ':id', component: OrderDetailsComponent }
 ];
 
 @NgModule({

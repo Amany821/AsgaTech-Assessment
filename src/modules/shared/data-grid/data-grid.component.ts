@@ -34,10 +34,8 @@ export class DataGridComponent {
   @Input() gridCols!: GridColDefModel[];
   @Input() gridData!: GridDataModel;
   @Input() gridCustomButtons?: GridCustomButtonModel[];
-  @Input() canAdd: boolean = false;
   @Input() canView: boolean = false;
   @Input() canEdit: boolean = false;
-  @Input() canDelete: boolean = false;
   @Input() withFiltration: boolean = false;
   @Input() withPagination: boolean = false;
   @Input() withSelection: boolean = false;
@@ -113,8 +111,7 @@ export class DataGridComponent {
 
     if (
       this.canView ||
-      this.canEdit ||
-      this.canDelete
+      this.canEdit
     ) {
       this.colDefs.push({
         field: 'Actions',
@@ -125,8 +122,7 @@ export class DataGridComponent {
             this.onActionClicked(actionModel);
           },
           canView: this.canView,
-          canEdit: this.canEdit,
-          canDelete: this.canDelete
+          canEdit: this.canEdit
         },
       });
     }

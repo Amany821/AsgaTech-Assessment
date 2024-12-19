@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { finalize, Subscription } from 'rxjs';
 import { GridColDefModel } from 'src/models/_common/GridColDefModel';
 import { UsersModel } from 'src/models/user/UsersModel';
+import { DataGridService } from 'src/services/data-grid.service';
 import { LoadingSpinnerService } from 'src/services/loading-spinner.service';
 import { UsersService } from 'src/services/users.service';
 
@@ -27,6 +28,7 @@ export class UsersListingComponent implements OnInit {
   constructor(
     private loaderService: LoadingSpinnerService,
     private usersService: UsersService,
+    private dataGridService: DataGridService,
     private datePipe: DatePipe
   ) {}
 
@@ -50,7 +52,7 @@ export class UsersListingComponent implements OnInit {
       this.loaderService.stop();
     })).subscribe({
       next:(res: UsersModel[]) => {
-        if(!localStorage.getItem('users')){
+        if(!localStorage.getItem('users')) {
           this.users = res;
         } else{
           this.users = JSON.parse(localStorage.getItem('users')!);
@@ -65,7 +67,7 @@ export class UsersListingComponent implements OnInit {
   onUpdateUsersListing() {
     this.users = this.users.map((user) => {
       return {
-        RegisterDate: this.datePipe.transform(this.usersService.onFixUserRegisteredDateFormat(user.RegisterDate), 'fullDate')!,
+        RegisterDate: this.datePipe.transform(this.dataGridService.onFixDateFormat(user.RegisterDate), 'fullDate')!,
         Address: user.Address,
         Email: user.Email,
         Id: user.Id,

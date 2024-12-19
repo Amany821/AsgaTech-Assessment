@@ -4,6 +4,7 @@ import { finalize } from 'rxjs';
 import { GridActionModel } from 'src/models/_common/GridActionModel';
 import { GridColDefModel } from 'src/models/_common/GridColDefModel';
 import { OrdersModel } from 'src/models/orders/OrdersModel';
+import { DataGridService } from 'src/services/data-grid.service';
 import { LoadingSpinnerService } from 'src/services/loading-spinner.service';
 import { ModalService } from 'src/services/modal.service';
 import { OrdersService } from 'src/services/orders.service';
@@ -28,6 +29,7 @@ export class OrdersListingComponent {
     private ordersService: OrdersService,
     private loaderService: LoadingSpinnerService,
     private modalService: ModalService,
+    private dataGridService: DataGridService,
     private datePipe: DatePipe
   ) {}
 
@@ -38,7 +40,7 @@ export class OrdersListingComponent {
   onActionClicked(gridAction: GridActionModel) {
     switch (gridAction.action) {
       case 'View':
-        this.modalService.openModal('order-details', new Map<string, any>([['orderDetails', gridAction.data]]), 'xl');
+        this.ordersService.onGetOrderDetails(gridAction.data.OrderId);
         break;
       default:
         break;
@@ -83,20 +85,12 @@ export class OrdersListingComponent {
   onUpdateOrdersListing() {
     this.orders = this.orders.map((order) => {
       return {
-        OrderDate: this.datePipe.transform(this.onFixOrderDateFormat(order.OrderDate), 'fullDate')!,
+        OrderDate: this.datePipe.transform(this.dataGridService.onFixDateFormat(order.OrderDate), 'fullDate')!,
         OrderId: order.OrderId,
         PaymentType: order.PaymentType,
         Products: order.Products,
         UserId: order.UserId
       };
     });
-  }
-
-  onFixOrderDateFormat(orderDateString: string): string {
-    const yearTimePattern = /(\d{4})(\d{2}:\d{2}:\d{2})/;
-    if (yearTimePattern.test(orderDateString)) {
-      orderDateString = orderDateString.replace(yearTimePattern, '$1 $2');
-    }
-    return orderDateString;
   }
 }

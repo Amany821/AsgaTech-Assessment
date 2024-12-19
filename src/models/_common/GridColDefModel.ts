@@ -12,5 +12,4 @@ export interface GridColDefModel {
   sortable?: boolean;
   cellStyle?: any;
   withSelection?: boolean;
-  hide?: boolean;
 }

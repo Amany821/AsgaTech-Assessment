@@ -11,7 +11,6 @@ import { ProductUpdateComponent } from 'src/modules/products/product-update/prod
 export class ModalService {
   components = new Map<string, any>([
     ['product-update', ProductUpdateComponent],
-    ['order-details', OrderDetailsComponent],
     ['order-product', AddOrderComponent]
 
   ]);
