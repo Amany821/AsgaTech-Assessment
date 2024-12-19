@@ -1,13 +1,54 @@
 # Angular Application
 
-## Description
-A brief description of your Angular application and its purpose.
 
-## Prerequisites
-Ensure you have Node.js (version 14.x or later) and Angular CLI installed globally. You can install Angular CLI using npm with the command `npm install -g @angular/cli`.
+# Product Order Management Application
 
-To set up the application, clone the repository using `git clone https://github.com/amanyAbdelfattah/asgatech-Assessment.git`, then navigate to the project directory with `cd your-repo`. Install the required dependencies by running `npm install`. 
+This application is designed to display and manage products and orders using three main JSON arrays. It provides a user-friendly and responsive interface for users to interact with the data.
 
-To run the application in development mode, execute `ng serve`, which will start a development server accessible at `http://localhost:4200`. For production builds, use `ng build --prod`, and the output will be in the `dist/` directory. To run unit tests, use `ng test`, and for end-to-end tests, use `ng e2e`.
+## Features
 
-If you wish to contribute, feel free to fork the repository and submit a pull request. This project is licensed under the MIT License - see the LICENSE file for details.
+- **Products Page**: Displays all available products, highlighting those with low quantities. Users can edit product details.
+- **Orders Page**: Lists all orders in the system along with the total price for each order and the payment method used.
+- **Order Details Page**: Provides detailed information about each order, including order details, customer information, product details, and quantities.
+- **Add New Order**: Choose from the products page some products then a popup will be opened to add the order details.
+
+## Installation
+
+To set up the application locally, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/amanyAbdelfattah/asgatech-Assessment.git
+
+2. Navigate to the project directory:
+   ```bash
+   cd asgatech-Assessment
+
+3. Install dependencies:
+   ```bash
+   cd npm install
+
+4. Run the application
+   ```bash
+   ng serve
+
+
+# Pages Overview
+
+1. Products Page:
+    Displays a list of all available products.
+    Products with low quantities are highlighted for easy identification.
+    Users can edit product details directly from this page.
+    Users can select some products and place an order.
+
+2. Orders Page
+    Shows all orders added to the system.
+    Lists the payment method used for each order.
+
+3. Order Details Page
+    Provides comprehensive details about each order.
+        Includes:
+            Order Details
+            Customer Details
+            Product Details and quantities
+
